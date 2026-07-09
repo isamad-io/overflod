@@ -7,7 +7,7 @@ async function main() {
   const store = await createStore();
   const app = createApp(store);
 
-  app.listen(PORT, '127.0.0.1', () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log('Overflod Express listo en http://127.0.0.1:' + PORT + '/');
     console.log(['sqlserver', 'mssql', 'sql-server'].includes(DB_ENGINE)
       ? 'Base de datos SQL Server: ' + (process.env.SQLSERVER_SERVER || 'localhost') + ' / ' + (process.env.SQLSERVER_DATABASE || 'Overflod')

@@ -1,4 +1,4 @@
-const SQL_SERVER = 'http://127.0.0.1:5501';
+const SQL_SERVER = '';
 const API_BASE = `${SQL_SERVER}/api`;
 const CART_KEY = 'overflod_cart_sql';
 const SESSION_KEY = 'overflod_session_sql';
