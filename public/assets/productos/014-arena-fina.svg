@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Arena Fina">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#e7edf3"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#e0be79"/>
+      <stop offset="1" stop-color="#1f6f8f"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#1b2b38" flood-opacity=".20"/>
+    </filter>
+    <style>
+      .line{fill:none;stroke:#263947;stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#263947;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+      .label{font-family:Arial,Helvetica,sans-serif;font-weight:800;fill:#263947;letter-spacing:1px}
+      .small{font-family:Arial,Helvetica,sans-serif;font-weight:700;fill:#5b6b76}
+    </style>
+  </defs>
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <circle cx="745" cy="100" r="115" fill="#e0be79" opacity=".12"/>
+  <circle cx="120" cy="500" r="130" fill="#19a7ce" opacity=".10"/>
+  <ellipse cx="450" cy="505" rx="330" ry="45" fill="#1b2b38" opacity=".10"/>
+
+  <g filter="url(#shadow)">
+    <path d="M220 430c64-150 129-206 228-214 123-9 192 78 236 214z" fill="#dec07c" stroke="#263947" stroke-width="10" join="round"/>
+    <path d="M292 390c70-42 197-56 308-18" class="thin" stroke="#fff" opacity=".40"/>
+    <circle cx="250" cy="300" r="5" fill="#ba925a" opacity=".85"/><circle cx="297" cy="331" r="6" fill="#ba925a" opacity=".85"/><circle cx="344" cy="362" r="7" fill="#ba925a" opacity=".85"/><circle cx="391" cy="393" r="8" fill="#ba925a" opacity=".85"/><circle cx="438" cy="304" r="9" fill="#ba925a" opacity=".85"/><circle cx="485" cy="335" r="5" fill="#ba925a" opacity=".85"/><circle cx="532" cy="366" r="6" fill="#ba925a" opacity=".85"/><circle cx="579" cy="397" r="7" fill="#ba925a" opacity=".85"/><circle cx="626" cy="308" r="8" fill="#ba925a" opacity=".85"/><circle cx="283" cy="339" r="9" fill="#ba925a" opacity=".85"/><circle cx="330" cy="370" r="5" fill="#ba925a" opacity=".85"/><circle cx="377" cy="401" r="6" fill="#ba925a" opacity=".85"/><circle cx="424" cy="312" r="7" fill="#ba925a" opacity=".85"/><circle cx="471" cy="343" r="8" fill="#ba925a" opacity=".85"/><circle cx="518" cy="374" r="9" fill="#ba925a" opacity=".85"/><circle cx="565" cy="405" r="5" fill="#ba925a" opacity=".85"/><circle cx="612" cy="316" r="6" fill="#ba925a" opacity=".85"/><circle cx="269" cy="347" r="7" fill="#ba925a" opacity=".85"/><circle cx="316" cy="378" r="8" fill="#ba925a" opacity=".85"/><circle cx="363" cy="409" r="9" fill="#ba925a" opacity=".85"/><circle cx="410" cy="320" r="5" fill="#ba925a" opacity=".85"/><circle cx="457" cy="351" r="6" fill="#ba925a" opacity=".85"/>
+    <text x="450" y="496" font-size="38" text-anchor="middle" class="label">ARENA FINA</text>
+  </g>
+</svg>

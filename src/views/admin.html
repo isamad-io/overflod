@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overflod | Administrador</title>
+  <meta name="description" content="Panel administrador para inventario, pedidos y mensajes de Overflod.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../public/css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#contenidoPrincipal">Saltar al contenido principal</a>
+<nav class="navbar navbar-expand-lg fixed-top navbar-overflod shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="../../public/assets/logo-overflod.png" alt="Logo Overflod" class="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu de navegacion">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-pills">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+        <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+        <li class="nav-item" id="linkAdmin" style="display:none"><a class="nav-link active" href="admin.html">Admin</a></li>
+      </ul>
+      <button class="btn btn-outline-light ms-lg-3 position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#carritoCanvas" aria-controls="carritoCanvas" aria-label="Abrir carrito de compras">
+        Carrito <span class="badge bg-info text-dark" id="contadorCarrito">0</span>
+      </button>
+      <div class="dropdown ms-lg-3">
+        <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Abrir menu de usuario">
+          <img id="imgPerfil" src="https://ui-avatars.com/api/?name=Guest&background=ccc&color=fff" alt="Perfil" width="40" height="40" class="rounded-circle border border-light">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+          <li><h6 class="dropdown-header">Estado:</h6></li>
+          <li><span class="dropdown-item-text fw-bold" id="estadoSesion">Cargando...</span></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="IniciarSesion.html">Mi cuenta</a></li>
+          <li><a class="dropdown-item text-danger" href="#" id="btnCerrarSesion">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero admin-hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <span class="badge badge-celeste mb-3">Panel interno</span>
+        <h1>Administrador Overflod</h1>
+        <p class="lead">Controla inventario, compras a proveedores, ventas, clientes registrados, pedidos pendientes y mensajes de contacto.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="admin-section section-padding" id="contenidoPrincipal">
+  <div class="container">
+    <div id="adminBloqueado" class="admin-locked">
+      <h2>Acceso de administrador</h2>
+      <p>Inicia sesión con una cuenta administradora para ver inventario, pedidos y consultas.</p>
+      <div class="d-flex flex-wrap gap-2 justify-content-center">
+        <button class="btn btn-celeste" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesión</button>
+        <a class="btn btn-outline-primary" href="IniciarSesion.html">Ir a mi cuenta</a>
+      </div>
+      <p class="small text-muted mt-3 mb-0">Usuario demo: admin@overflod.com / admin123</p>
+    </div>
+
+    <div id="adminContenido" class="d-none">
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+        <div>
+          <span class="section-kicker">Operación</span>
+          <h2 class="mb-0">Resumen general</h2>
+        </div>
+        <a href="contacto.html" class="btn btn-outline-primary">Ver formulario de contacto</a>
+      </div>
+
+      <div class="row g-4 mb-4" id="reportesAdmin"></div>
+      <div class="row g-3 mb-4" id="adminSubmetricas"></div>
+
+      <ul class="nav nav-tabs admin-tabs" id="adminTabs" role="tablist">
+        <li class="nav-item" role="presentation"><button class="nav-link active" id="boveda-tab" data-bs-toggle="tab" data-bs-target="#boveda" type="button" role="tab">Bóveda ERP</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="validacion-tab" data-bs-toggle="tab" data-bs-target="#validacion" type="button" role="tab">Validación pagos</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="inventario-tab" data-bs-toggle="tab" data-bs-target="#inventario" type="button" role="tab">Inventario ROP</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="proveedores-tab" data-bs-toggle="tab" data-bs-target="#proveedores" type="button" role="tab">Proveedores / compras</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="ventas-tab" data-bs-toggle="tab" data-bs-target="#ventas" type="button" role="tab">Ventas</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="clientes-tab" data-bs-toggle="tab" data-bs-target="#clientes" type="button" role="tab">Clientes</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="pendientes-tab" data-bs-toggle="tab" data-bs-target="#pendientes" type="button" role="tab">Pedidos pendientes</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="pedidos-tab" data-bs-toggle="tab" data-bs-target="#pedidos" type="button" role="tab">Todos los pedidos</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="mensajes-tab" data-bs-toggle="tab" data-bs-target="#mensajes" type="button" role="tab">Mensajes</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="usuarios-tab" data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab">RBAC / permisos</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="nuevo-tab" data-bs-toggle="tab" data-bs-target="#nuevo" type="button" role="tab">Nuevo producto</button></li>
+      </ul>
+
+      <div class="tab-content admin-tab-content">
+        <section class="tab-pane fade show active" id="boveda" role="tabpanel" aria-labelledby="boveda-tab">
+          <form id="bovedaFiltroForm" class="row g-2 align-items-end mb-3">
+            <div class="col-md-2"><label class="form-label" for="vaultFechaDesde">Desde</label><input type="date" class="form-control" id="vaultFechaDesde"></div>
+            <div class="col-md-2"><label class="form-label" for="vaultFechaHasta">Hasta</label><input type="date" class="form-control" id="vaultFechaHasta"></div>
+            <div class="col-md-2"><label class="form-label" for="vaultTipo">Tipo</label><select class="form-select" id="vaultTipo"><option value="">Todos</option><option value="VENTA">Venta</option><option value="COMPRA">Compra</option></select></div>
+            <div class="col-md-2"><label class="form-label" for="vaultEstado">Estado</label><select class="form-select" id="vaultEstado"><option value="">Todos</option><option>Pendiente</option><option>En Revisión</option><option>Pagado/Validado</option><option>Rechazado</option></select></div>
+            <div class="col-md-2"><label class="form-label" for="vaultAtributo">Atributo</label><input class="form-control" id="vaultAtributo" placeholder="cliente, sku, monto"></div>
+            <div class="col-md-2"><label class="form-label" for="vaultBusqueda">Buscar</label><input class="form-control" id="vaultBusqueda" placeholder="Texto libre"></div>
+            <div class="col-12"><button class="btn btn-outline-primary btn-sm" type="submit">Aplicar filtros</button></div>
+          </form>
+          <div class="admin-workbench">
+            <aside class="vault-panel vault-explorer" aria-label="Explorador de archivos">
+              <div class="workbench-title">Explorador</div>
+              <div id="vaultExplorer"></div>
+            </aside>
+            <section class="vault-panel vault-detail" aria-label="Detalle de transacción">
+              <div class="workbench-title">Vista de nota</div>
+              <div id="vaultDetail"></div>
+            </section>
+            <aside class="vault-panel vault-chat" aria-label="Comunicación interna">
+              <div class="workbench-title">Notas internas</div>
+              <div id="vaultChat"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="tab-pane fade" id="validacion" role="tabpanel" aria-labelledby="validacion-tab">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead><tr><th>Transacción</th><th>Cliente</th><th>Voucher</th><th>Total</th><th>Notas</th><th>Acción</th></tr></thead>
+              <tbody id="tablaValidacionPagos"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="tab-pane fade" id="inventario" role="tabpanel" aria-labelledby="inventario-tab">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead><tr><th>ID / producto</th><th>Unidad</th><th>Proveedor</th><th>Stock</th><th>Landed cost</th><th>Venta</th><th>Límite bajo</th><th>Estado</th><th>Acción</th></tr></thead>
+              <tbody id="tablaProductosAdmin"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="tab-pane fade" id="proveedores" role="tabpanel" aria-labelledby="proveedores-tab">
+          <div class="row g-4">
+            <div class="col-lg-5">
+              <form id="proveedorCompraForm" class="admin-product-form">
+                <h3 class="h5 mb-3">Comprar productos al proveedor</h3>
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label class="form-label" for="compraProveedor">Proveedor</label>
+                    <select class="form-select" id="compraProveedor" required></select>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="compraProducto">Producto</label>
+                    <select class="form-select" id="compraProducto" required></select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="compraCantidad">Cantidad</label>
+                    <div class="input-group">
+                      <input type="number" min="1" step="1" class="form-control" id="compraCantidad" required>
+                      <span class="input-group-text" id="compraUnidad">Unidad</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="compraBase">Compra base</label>
+                    <input type="number" min="0" step="0.10" class="form-control" id="compraBase" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="compraFlete">Flete</label>
+                    <input type="number" min="0" step="0.10" class="form-control" id="compraFlete" value="0">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="compraImpuestos">Impuestos</label>
+                    <input type="number" min="0" step="0.10" class="form-control" id="compraImpuestos" value="0">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="compraLandedCost">Landed cost unitario</label>
+                    <input type="text" class="form-control" id="compraLandedCost" readonly>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="compraNota">Nota</label>
+                    <textarea class="form-control" id="compraNota" rows="2" placeholder="Factura, guía, lote o comentario"></textarea>
+                  </div>
+                  <div class="col-12"><button class="btn btn-celeste" type="submit">Registrar compra y sumar stock</button></div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-7">
+              <h3 class="h5 mb-3">Proveedores registrados</h3>
+              <div class="table-responsive mb-4">
+                <table class="table table-hover align-middle">
+                  <thead><tr><th>Proveedor</th><th>Productos</th><th>Stock</th><th>Costo inventario</th><th>Líneas</th></tr></thead>
+                  <tbody id="tablaProveedores"></tbody>
+                </table>
+              </div>
+              <h3 class="h5 mb-3">Historial de compras</h3>
+              <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                  <thead><tr><th>Compra</th><th>Proveedor</th><th>Producto</th><th>Cantidad</th><th>Costo</th><th>Total</th></tr></thead>
+                  <tbody id="tablaComprasProveedor"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="tab-pane fade" id="ventas" role="tabpanel" aria-labelledby="ventas-tab">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead><tr><th>Venta</th><th>Cliente</th><th>Productos</th><th>Total venta</th><th>Costo</th><th>Utilidad</th><th>Estado</th></tr></thead>
+              <tbody id="tablaVentas"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="tab-pane fade" id="clientes" role="tabpanel" aria-labelledby="clientes-tab">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead><tr><th>Cliente</th><th>Correo</th><th>Teléfono</th><th>Compras</th><th>Total comprado</th><th>Última compra</th></tr></thead>
+              <tbody id="tablaClientes"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="tab-pane fade" id="pendientes" role="tabpanel" aria-labelledby="pendientes-tab">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead><tr><th>Pedido</th><th>Cliente</th><th>Productos</th><th>Total</th><th>Estado</th></tr></thead>
+              <tbody id="tablaPedidosPendientes"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="tab-pane fade" id="pedidos" role="tabpanel" aria-labelledby="pedidos-tab">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead><tr><th>Pedido</th><th>Cliente</th><th>Productos</th><th>Total</th><th>Estado</th></tr></thead>
+              <tbody id="tablaPedidos"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="tab-pane fade" id="mensajes" role="tabpanel" aria-labelledby="mensajes-tab">
+          <div id="listaConsultasAdmin"></div>
+        </section>
+
+        <section class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
+          <div class="row g-4">
+            <div class="col-lg-4">
+              <form id="usuarioPermisosForm" class="admin-product-form">
+                <h3 class="h5 mb-3">Crear usuario operativo</h3>
+                <div class="mb-2"><label class="form-label" for="permisoNombre">Nombre</label><input class="form-control" id="permisoNombre" required minlength="3"></div>
+                <div class="mb-2"><label class="form-label" for="permisoCorreo">Correo</label><input type="email" class="form-control" id="permisoCorreo" required></div>
+                <div class="mb-2"><label class="form-label" for="permisoTelefono">Teléfono</label><input type="tel" class="form-control" id="permisoTelefono" required pattern="[0-9+() -]{6,20}"></div>
+                <div class="mb-3"><label class="form-label" for="permisoClave">Contraseña</label><input type="password" class="form-control" id="permisoClave" required minlength="6"></div>
+                <div class="permission-grid" id="permisosUsuarioNuevo"></div>
+                <button class="btn btn-celeste w-100 mt-3" type="submit">Crear con permisos</button>
+              </form>
+            </div>
+            <div class="col-lg-8">
+              <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                  <thead><tr><th>Usuario</th><th>Permisos por acción</th><th>Guardar</th></tr></thead>
+                  <tbody id="tablaUsuarios"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="tab-pane fade" id="nuevo" role="tabpanel" aria-labelledby="nuevo-tab">
+          <form id="productoAdminForm" class="admin-product-form">
+            <div class="row g-3">
+              <div class="col-md-2"><label class="form-label" for="adminSkuProducto">ID</label><input class="form-control" id="adminSkuProducto" pattern="[A-Za-z0-9-]+" maxlength="20" placeholder="021"></div>
+              <div class="col-md-6"><label class="form-label" for="adminNombreProducto">Nombre</label><input class="form-control" id="adminNombreProducto" required minlength="2" maxlength="160"></div>
+              <div class="col-md-4"><label class="form-label" for="adminUnidadProducto">Unidad</label><input class="form-control" id="adminUnidadProducto" minlength="1" maxlength="40" placeholder="Bolsa, m3, Unidad" required></div>
+              <div class="col-md-4"><label class="form-label" for="adminProveedorProducto">Proveedor</label><input class="form-control" id="adminProveedorProducto" required minlength="2" maxlength="120"></div>
+              <div class="col-md-4"><label class="form-label" for="adminCategoriaProducto">Categoría</label><input class="form-control" id="adminCategoriaProducto" required minlength="2" maxlength="80"></div>
+              <div class="col-md-4"><label class="form-label" for="adminMaterialProducto">Material</label><input class="form-control" id="adminMaterialProducto" required minlength="1" maxlength="100"></div>
+              <div class="col-md-3"><label class="form-label" for="adminCostoProducto">Compra base</label><input type="number" min="0" step="0.10" class="form-control" id="adminCostoProducto" required></div>
+              <div class="col-md-3"><label class="form-label" for="adminFleteProducto">Flete</label><input type="number" min="0" step="0.10" class="form-control" id="adminFleteProducto" value="0"></div>
+              <div class="col-md-3"><label class="form-label" for="adminImpuestosProducto">Impuestos</label><input type="number" min="0" step="0.10" class="form-control" id="adminImpuestosProducto" value="0"></div>
+              <div class="col-md-3"><label class="form-label" for="adminUnidadesCosteoProducto">Unidades costeo</label><input type="number" min="1" step="1" class="form-control" id="adminUnidadesCosteoProducto" value="1"></div>
+              <div class="col-md-4"><label class="form-label" for="adminPrecioProducto">Precio venta</label><input type="number" min="0.01" step="0.01" class="form-control" id="adminPrecioProducto" required></div>
+              <div class="col-md-4"><label class="form-label" for="adminStockProducto">Stock</label><input type="number" min="0" step="1" class="form-control" id="adminStockProducto" value="50" required></div>
+              <div class="col-md-4"><label class="form-label" for="adminLandedPreview">Landed cost</label><input class="form-control" id="adminLandedPreview" readonly></div>
+              <div class="col-md-4"><label class="form-label" for="adminConsumoDiarioProducto">Consumo diario</label><input type="number" min="0" step="0.10" class="form-control" id="adminConsumoDiarioProducto" value="1"></div>
+              <div class="col-md-4"><label class="form-label" for="adminLeadTimeProducto">Lead time (días)</label><input type="number" min="0" step="1" class="form-control" id="adminLeadTimeProducto" value="7"></div>
+              <div class="col-md-4"><label class="form-label" for="adminStockSeguridadProducto">Stock seguridad</label><input type="number" min="0" step="1" class="form-control" id="adminStockSeguridadProducto" value="20"></div>
+              <div class="col-12"><label class="form-label" for="adminImagenProducto">Imagen URL</label><input type="url" class="form-control" id="adminImagenProducto" placeholder="https://..."></div>
+              <div class="col-12"><label class="form-label" for="adminDetalleProducto">Detalle</label><textarea class="form-control" id="adminDetalleProducto" rows="3" maxlength="700"></textarea></div>
+              <div class="col-12"><button class="btn btn-celeste" type="submit">Agregar producto</button></div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="carritoCanvas" aria-labelledby="carritoTitulo">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="carritoTitulo">Carrito de compras</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar carrito"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div id="listaCarrito" aria-live="polite"></div>
+    <hr>
+    <h4>Total: S/ <span id="totalCarrito">0.00</span></h4>
+    <button class="btn btn-celeste w-100 mt-3" id="btnConfirmarPedido">Confirmar pedido</button>
+    <p class="small text-muted mt-2">Solo usuarios registrados pueden confirmar compras.</p>
+  </div>
+</div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginTitulo" aria-hidden="true">
+  <div class="modal-dialog"><div class="modal-content"><form id="loginForm">
+    <div class="modal-header"><h5 class="modal-title" id="loginTitulo">Iniciar sesión</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar inicio de sesion"></button></div>
+    <div class="modal-body">
+      <div class="mb-3"><label class="form-label" for="loginCorreo">Correo</label><input type="email" class="form-control" id="loginCorreo" required></div>
+      <div class="mb-3"><label class="form-label" for="loginClave">Contraseña</label><input type="password" class="form-control" id="loginClave" required></div>
+    </div>
+    <div class="modal-footer"><button type="submit" class="btn btn-celeste">Ingresar</button></div>
+  </form></div></div>
+</div>
+
+<div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroTitulo" aria-hidden="true">
+  <div class="modal-dialog"><div class="modal-content"><form id="registroForm">
+    <div class="modal-header"><h5 class="modal-title" id="registroTitulo">Registro de usuario</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar registro"></button></div>
+    <div class="modal-body">
+      <div class="mb-3"><label class="form-label" for="registroNombre">Nombre completo</label><input type="text" class="form-control" id="registroNombre" required minlength="3"></div>
+      <div class="mb-3"><label class="form-label" for="registroCorreo">Correo</label><input type="email" class="form-control" id="registroCorreo" required></div>
+      <div class="mb-3"><label class="form-label" for="registroTelefono">Teléfono</label><input type="tel" class="form-control" id="registroTelefono" required pattern="[0-9+() -]{6,20}"></div>
+      <div class="mb-3"><label class="form-label" for="registroClave">Contraseña</label><input type="password" class="form-control" id="registroClave" required minlength="6"></div>
+    </div>
+    <div class="modal-footer"><button type="submit" class="btn btn-celeste">Crear cuenta</button></div>
+  </form></div></div>
+</div>
+
+<div class="modal fade" id="inventarioEditorModal" tabindex="-1" aria-labelledby="inventarioEditorTitulo" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable"><div class="modal-content"><form id="inventarioEditorForm">
+    <div class="modal-header">
+      <h5 class="modal-title" id="inventarioEditorTitulo">Editar producto de inventario</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar editor de inventario"></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editProductoId">
+      <div class="row g-3">
+        <div class="col-md-2"><label class="form-label" for="editIdInterno">ID interno</label><input class="form-control" id="editIdInterno" readonly></div>
+        <div class="col-md-2"><label class="form-label" for="editSku">SKU / ID</label><input class="form-control" id="editSku" pattern="[A-Za-z0-9-]+" maxlength="20" required></div>
+        <div class="col-md-5"><label class="form-label" for="editNombre">Nombre</label><input class="form-control" id="editNombre" required minlength="2" maxlength="160"></div>
+        <div class="col-md-3"><label class="form-label" for="editUnidad">Unidad</label><input class="form-control" id="editUnidad" required minlength="1" maxlength="40"></div>
+        <div class="col-md-4"><label class="form-label" for="editProveedor">Proveedor</label><input class="form-control" id="editProveedor" required minlength="2" maxlength="120"></div>
+        <div class="col-md-4"><label class="form-label" for="editCategoria">Categoría</label><input class="form-control" id="editCategoria" required minlength="2" maxlength="80"></div>
+        <div class="col-md-4"><label class="form-label" for="editMaterial">Material</label><input class="form-control" id="editMaterial" required minlength="1" maxlength="100"></div>
+
+        <div class="col-md-3"><label class="form-label" for="editCompraBase">Compra base</label><input type="number" min="0" step="0.10" class="form-control" id="editCompraBase" required></div>
+        <div class="col-md-3"><label class="form-label" for="editFlete">Flete</label><input type="number" min="0" step="0.10" class="form-control" id="editFlete" required></div>
+        <div class="col-md-3"><label class="form-label" for="editImpuestos">Impuestos</label><input type="number" min="0" step="0.10" class="form-control" id="editImpuestos" required></div>
+        <div class="col-md-3"><label class="form-label" for="editUnidadesCosteo">Unidades costeo</label><input type="number" min="1" step="1" class="form-control" id="editUnidadesCosteo" required></div>
+
+        <div class="col-md-3"><label class="form-label" for="editPrecioVenta">Precio venta</label><input type="number" min="0.01" step="0.01" class="form-control" id="editPrecioVenta" required></div>
+        <div class="col-md-3"><label class="form-label" for="editStock">Stock actual</label><input type="number" min="0" step="1" class="form-control" id="editStock" required></div>
+        <div class="col-md-6"><label class="form-label" for="editLandedPreview">Landed cost / ROP recomendado</label><input class="form-control" id="editLandedPreview" readonly></div>
+
+        <div class="col-md-3"><label class="form-label" for="editConsumoDiario">Consumo diario</label><input type="number" min="0" step="0.10" class="form-control" id="editConsumoDiario" required></div>
+        <div class="col-md-3"><label class="form-label" for="editLeadTime">Lead time (días)</label><input type="number" min="0" step="1" class="form-control" id="editLeadTime" required></div>
+        <div class="col-md-3"><label class="form-label" for="editStockSeguridad">Stock seguridad</label><input type="number" min="0" step="1" class="form-control" id="editStockSeguridad" required></div>
+        <div class="col-md-3">
+          <label class="form-label" for="editPuntoReorden">Límite inventario bajo</label>
+          <input type="number" min="0" step="1" class="form-control" id="editPuntoReorden" required>
+          <button class="btn btn-link btn-sm px-0" type="button" onclick="usarRopRecomendado()">Usar ROP recomendado</button>
+        </div>
+
+        <div class="col-md-8"><label class="form-label" for="editImagen">Imagen URL</label><input type="url" class="form-control" id="editImagen" placeholder="https://..."></div>
+        <div class="col-md-4">
+          <label class="form-label">Vista rápida</label>
+          <div class="inventory-image-preview"><img id="editImagenPreview" alt="Vista previa del producto"></div>
+        </div>
+        <div class="col-12"><label class="form-label" for="editDetalle">Detalle</label><textarea class="form-control" id="editDetalle" rows="3" maxlength="1000"></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+      <button type="submit" class="btn btn-celeste">Guardar cambios</button>
+    </div>
+  </form></div></div>
+</div>
+
+<div class="modal fade" id="visorDocumentoModal" tabindex="-1" aria-labelledby="visorDocumentoTitulo" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered"><div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="visorDocumentoTitulo">Comprobante del cliente</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar visor de comprobante"></button>
+    </div>
+    <div class="modal-body" id="visorDocumentoBody"></div>
+  </div></div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toastMensaje" class="toast" role="alert">
+    <div class="toast-header"><strong class="me-auto">Overflod</strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Cerrar mensaje"></button></div>
+    <div class="toast-body" id="toastTexto">Mensaje</div>
+  </div>
+</div>
+
+<footer class="footer-overflod">
+  <div class="container text-center">
+    <img src="../../public/assets/logo-overflod.png" alt="Logo Overflod" class="logo-footer mb-2">
+    <p class="mb-1">© 2026 Overflod - Cemento y Losas</p>
+    <p class="small mb-0">Proyecto desarrollado con HTML, CSS, JavaScript, Bootstrap, Node.js, Express.js y base de datos compatible con SQL Server.</p>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../public/js/catalago.js"></script>
+</body>
+</html>

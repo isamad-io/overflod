@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Lija para madera">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#e7edf3"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#caa66d"/>
+      <stop offset="1" stop-color="#1f6f8f"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#1b2b38" flood-opacity=".20"/>
+    </filter>
+    <style>
+      .line{fill:none;stroke:#263947;stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#263947;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+      .label{font-family:Arial,Helvetica,sans-serif;font-weight:800;fill:#263947;letter-spacing:1px}
+      .small{font-family:Arial,Helvetica,sans-serif;font-weight:700;fill:#5b6b76}
+    </style>
+  </defs>
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <circle cx="745" cy="100" r="115" fill="#caa66d" opacity=".12"/>
+  <circle cx="120" cy="500" r="130" fill="#19a7ce" opacity=".10"/>
+  <ellipse cx="450" cy="505" rx="330" ry="45" fill="#1b2b38" opacity=".10"/>
+
+  <g filter="url(#shadow)">
+    <rect x="295" y="190" width="250" height="225" rx="16" fill="#caa66d" stroke="#263947" stroke-width="10" transform="rotate(-7 420 302)"/>
+    <rect x="370" y="230" width="250" height="225" rx="16" fill="#d8bd88" stroke="#263947" stroke-width="10" transform="rotate(8 495 342)"/>
+    <circle cx="330" cy="225" r="4" fill="#8f744d" opacity=".8"/><circle cx="364" cy="225" r="4" fill="#8f744d" opacity=".8"/><circle cx="398" cy="225" r="4" fill="#8f744d" opacity=".8"/><circle cx="432" cy="225" r="4" fill="#8f744d" opacity=".8"/><circle cx="466" cy="225" r="4" fill="#8f744d" opacity=".8"/><circle cx="500" cy="225" r="4" fill="#8f744d" opacity=".8"/><circle cx="534" cy="225" r="4" fill="#8f744d" opacity=".8"/><circle cx="330" cy="255" r="4" fill="#8f744d" opacity=".8"/><circle cx="364" cy="255" r="4" fill="#8f744d" opacity=".8"/><circle cx="398" cy="255" r="4" fill="#8f744d" opacity=".8"/><circle cx="432" cy="255" r="4" fill="#8f744d" opacity=".8"/><circle cx="466" cy="255" r="4" fill="#8f744d" opacity=".8"/><circle cx="500" cy="255" r="4" fill="#8f744d" opacity=".8"/><circle cx="534" cy="255" r="4" fill="#8f744d" opacity=".8"/><circle cx="330" cy="285" r="4" fill="#8f744d" opacity=".8"/><circle cx="364" cy="285" r="4" fill="#8f744d" opacity=".8"/><circle cx="398" cy="285" r="4" fill="#8f744d" opacity=".8"/><circle cx="432" cy="285" r="4" fill="#8f744d" opacity=".8"/><circle cx="466" cy="285" r="4" fill="#8f744d" opacity=".8"/><circle cx="500" cy="285" r="4" fill="#8f744d" opacity=".8"/><circle cx="534" cy="285" r="4" fill="#8f744d" opacity=".8"/><circle cx="330" cy="315" r="4" fill="#8f744d" opacity=".8"/><circle cx="364" cy="315" r="4" fill="#8f744d" opacity=".8"/><circle cx="398" cy="315" r="4" fill="#8f744d" opacity=".8"/><circle cx="432" cy="315" r="4" fill="#8f744d" opacity=".8"/><circle cx="466" cy="315" r="4" fill="#8f744d" opacity=".8"/><circle cx="500" cy="315" r="4" fill="#8f744d" opacity=".8"/><circle cx="534" cy="315" r="4" fill="#8f744d" opacity=".8"/><circle cx="330" cy="345" r="4" fill="#8f744d" opacity=".8"/><circle cx="364" cy="345" r="4" fill="#8f744d" opacity=".8"/><circle cx="398" cy="345" r="4" fill="#8f744d" opacity=".8"/><circle cx="432" cy="345" r="4" fill="#8f744d" opacity=".8"/><circle cx="466" cy="345" r="4" fill="#8f744d" opacity=".8"/><circle cx="500" cy="345" r="4" fill="#8f744d" opacity=".8"/><circle cx="534" cy="345" r="4" fill="#8f744d" opacity=".8"/><circle cx="330" cy="375" r="4" fill="#8f744d" opacity=".8"/><circle cx="364" cy="375" r="4" fill="#8f744d" opacity=".8"/><circle cx="398" cy="375" r="4" fill="#8f744d" opacity=".8"/><circle cx="432" cy="375" r="4" fill="#8f744d" opacity=".8"/><circle cx="466" cy="375" r="4" fill="#8f744d" opacity=".8"/><circle cx="500" cy="375" r="4" fill="#8f744d" opacity=".8"/><circle cx="534" cy="375" r="4" fill="#8f744d" opacity=".8"/>
+    <text x="450" y="500" font-size="38" text-anchor="middle" class="label">LIJA GRANO 80</text>
+  </g>
+</svg>

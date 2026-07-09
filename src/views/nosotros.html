@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overflod | Nosotros</title>
+  <meta name="description" content="Conoce la historia, misión y propuesta de valor de Overflod.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../public/css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#contenidoPrincipal">Saltar al contenido principal</a>
+<nav class="navbar navbar-expand-lg fixed-top navbar-overflod shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="../../public/assets/logo-overflod.png" alt="Logo Overflod" class="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu de navegacion">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-pills">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+        <li class="nav-item"><a class="nav-link active" href="nosotros.html">Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+        <li class="nav-item" id="linkAdmin" style="display:none"><a class="nav-link" href="admin.html">Admin</a></li>
+      </ul>
+      <button class="btn btn-outline-light ms-lg-3 position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#carritoCanvas" aria-controls="carritoCanvas" aria-label="Abrir carrito de compras">
+        Carrito <span class="badge bg-info text-dark" id="contadorCarrito">0</span>
+      </button>
+      <div class="dropdown ms-lg-3">
+        <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Abrir menu de usuario">
+          <img id="imgPerfil" src="https://ui-avatars.com/api/?name=Guest&background=ccc&color=fff" alt="Perfil" width="40" height="40" class="rounded-circle border border-light">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+          <li><h6 class="dropdown-header">Estado:</h6></li>
+          <li><span class="dropdown-item-text fw-bold" id="estadoSesion">Cargando...</span></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="IniciarSesion.html">Mi cuenta</a></li>
+          <li><a class="dropdown-item text-danger" href="#" id="btnCerrarSesion">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero nosotros-hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <span class="badge badge-celeste mb-3">Materiales para construcción</span>
+        <h1>Somos Overflod</h1>
+        <p class="lead">Abastecemos obras con cemento, losas, ladrillos, prefabricados y agregados seleccionados para construir con resistencia y continuidad.</p>
+        <div class="d-flex gap-2 flex-wrap mt-4">
+          <a href="catalogo.html" class="btn btn-celeste btn-lg">Ver productos</a>
+          <a href="contacto.html" class="btn btn-outline-light btn-lg">Solicitar cotización</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="contenidoPrincipal">
+  <section class="section-padding">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+          <span class="section-kicker">Nuestra historia</span>
+          <h2>Un proveedor preparado para obras que no pueden detenerse</h2>
+          <p>Overflod nace para atender a maestros de obra, constructoras y familias que necesitan materiales confiables, despacho claro y atención rápida. Trabajamos con proveedores de cemento, arcilla, concreto y prefabricados para cubrir pedidos pequeños y compras por volumen.</p>
+          <p>El catálogo combina productos de alta rotación con soluciones para techos, muros, acabados y exteriores. Cada pedido se registra en el sistema para controlar stock, seguimiento y estado de entrega.</p>
+        </div>
+        <div class="col-lg-6">
+          <div class="row g-3">
+            <div class="col-sm-6"><div class="mini-card"><strong>20+</strong><p class="mb-0">líneas de productos listas para cotizar</p></div></div>
+            <div class="col-sm-6"><div class="mini-card"><strong>8</strong><p class="mb-0">categorías para obra gruesa y acabados</p></div></div>
+            <div class="col-sm-6"><div class="mini-card"><strong>24 h</strong><p class="mb-0">seguimiento de consultas y pedidos</p></div></div>
+            <div class="col-sm-6"><div class="mini-card"><strong>Local</strong><p class="mb-0">atención enfocada en proyectos cercanos</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding bg-soft">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-kicker">Cómo trabajamos</span>
+        <h2>Orden, resistencia y respuesta</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4"><div class="value-card"><h3>Calidad</h3><p>Priorizamos productos con buena resistencia, ficha clara y uso definido para cada etapa de obra.</p></div></div>
+        <div class="col-md-4"><div class="value-card"><h3>Inventario visible</h3><p>El catálogo muestra stock y el administrador puede actualizar cantidades desde el panel.</p></div></div>
+        <div class="col-md-4"><div class="value-card"><h3>Atención rápida</h3><p>Las consultas de contacto llegan al panel para dar seguimiento sin perder mensajes.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="mission-panel h-100">
+            <span class="section-kicker">Misión</span>
+            <h2>Abastecer obras con materiales confiables</h2>
+            <p>Facilitar la compra de materiales de construcción con información clara, precios visibles, control de inventario y atención ordenada para cada cliente.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="mission-panel h-100">
+            <span class="section-kicker">Visión</span>
+            <h2>Ser un aliado de confianza para construir mejor</h2>
+            <p>Convertirnos en una tienda referente para constructoras, maestros y hogares que buscan resistencia, disponibilidad y cumplimiento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding bg-soft">
+    <div class="container">
+      <div class="text-center mb-4">
+        <span class="section-kicker">Proveedores</span>
+        <h2>Marcas y líneas aliadas</h2>
+      </div>
+      <div class="row g-4" id="proveedoresContainer" aria-live="polite"></div>
+    </div>
+  </section>
+</main>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="carritoCanvas" aria-labelledby="carritoTitulo">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="carritoTitulo">Carrito de compras</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar carrito"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div id="listaCarrito" aria-live="polite"></div>
+    <hr>
+    <h4>Total: S/ <span id="totalCarrito">0.00</span></h4>
+    <button class="btn btn-celeste w-100 mt-3" id="btnConfirmarPedido">Confirmar pedido</button>
+    <p class="small text-muted mt-2">Solo usuarios registrados pueden confirmar compras.</p>
+  </div>
+</div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginTitulo" aria-hidden="true">
+  <div class="modal-dialog"><div class="modal-content"><form id="loginForm">
+    <div class="modal-header"><h5 class="modal-title" id="loginTitulo">Iniciar sesión</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar inicio de sesion"></button></div>
+    <div class="modal-body">
+      <div class="mb-3"><label class="form-label" for="loginCorreo">Correo</label><input type="email" class="form-control" id="loginCorreo" required></div>
+      <div class="mb-3"><label class="form-label" for="loginClave">Contraseña</label><input type="password" class="form-control" id="loginClave" required></div>
+    </div>
+    <div class="modal-footer"><button type="submit" class="btn btn-celeste">Ingresar</button></div>
+  </form></div></div>
+</div>
+
+<div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroTitulo" aria-hidden="true">
+  <div class="modal-dialog"><div class="modal-content"><form id="registroForm">
+    <div class="modal-header"><h5 class="modal-title" id="registroTitulo">Registro de usuario</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar registro"></button></div>
+    <div class="modal-body">
+      <div class="mb-3"><label class="form-label" for="registroNombre">Nombre completo</label><input type="text" class="form-control" id="registroNombre" required minlength="3"></div>
+      <div class="mb-3"><label class="form-label" for="registroCorreo">Correo</label><input type="email" class="form-control" id="registroCorreo" required></div>
+      <div class="mb-3"><label class="form-label" for="registroTelefono">Teléfono</label><input type="tel" class="form-control" id="registroTelefono" required pattern="[0-9+() -]{6,20}"></div>
+      <div class="mb-3"><label class="form-label" for="registroClave">Contraseña</label><input type="password" class="form-control" id="registroClave" required minlength="6"></div>
+    </div>
+    <div class="modal-footer"><button type="submit" class="btn btn-celeste">Crear cuenta</button></div>
+  </form></div></div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toastMensaje" class="toast" role="alert">
+    <div class="toast-header"><strong class="me-auto">Overflod</strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Cerrar mensaje"></button></div>
+    <div class="toast-body" id="toastTexto">Mensaje</div>
+  </div>
+</div>
+
+<footer class="footer-overflod">
+  <div class="container text-center">
+    <img src="../../public/assets/logo-overflod.png" alt="Logo Overflod" class="logo-footer mb-2">
+    <p class="mb-1">© 2026 Overflod - Cemento y Losas</p>
+    <p class="small mb-0">Proyecto desarrollado con HTML, CSS, JavaScript, Bootstrap, Node.js, Express.js y base de datos compatible con SQL Server.</p>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../public/js/catalago.js"></script>
+</body>
+</html>

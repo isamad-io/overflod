@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Bisagra de acero">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#e7edf3"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#9ba8b2"/>
+      <stop offset="1" stop-color="#1f6f8f"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#1b2b38" flood-opacity=".20"/>
+    </filter>
+    <style>
+      .line{fill:none;stroke:#263947;stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#263947;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+      .label{font-family:Arial,Helvetica,sans-serif;font-weight:800;fill:#263947;letter-spacing:1px}
+      .small{font-family:Arial,Helvetica,sans-serif;font-weight:700;fill:#5b6b76}
+    </style>
+  </defs>
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <circle cx="745" cy="100" r="115" fill="#9ba8b2" opacity=".12"/>
+  <circle cx="120" cy="500" r="130" fill="#19a7ce" opacity=".10"/>
+  <ellipse cx="450" cy="505" rx="330" ry="45" fill="#1b2b38" opacity=".10"/>
+
+  <g filter="url(#shadow)">
+    <rect x="265" y="190" width="155" height="250" rx="18" fill="#c8d0d8" stroke="#263947" stroke-width="10"/>
+    <rect x="480" y="190" width="155" height="250" rx="18" fill="#dfe5ea" stroke="#263947" stroke-width="10"/>
+    <rect x="420" y="178" width="60" height="274" rx="28" fill="#87939d" stroke="#263947" stroke-width="10"/>
+    <circle cx="342" cy="255" r="22" fill="#f8fbff" stroke="#263947" stroke-width="7"/>
+    <circle cx="342" cy="376" r="22" fill="#f8fbff" stroke="#263947" stroke-width="7"/>
+    <circle cx="558" cy="255" r="22" fill="#f8fbff" stroke="#263947" stroke-width="7"/>
+    <circle cx="558" cy="376" r="22" fill="#f8fbff" stroke="#263947" stroke-width="7"/>
+    <text x="450" y="496" font-size="38" text-anchor="middle" class="label">BISAGRA 3"</text>
+  </g>
+</svg>

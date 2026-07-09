@@ -1,0 +1,19 @@
+{
+  "name": "overflod-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run dev",
+    "dev": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mssql": "^11.0.1"
+  }
+}
